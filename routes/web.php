@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('activateuser/{id}','ManagerController@activateuser')->name('ACT_USR');
+Route::resource('category', 'CategoryController');
+Route::resource('book', 'BookController');
+

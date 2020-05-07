@@ -24,7 +24,7 @@ class BookRateController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
