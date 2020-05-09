@@ -68,7 +68,10 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        // dd($book);
+        $categories = Category::all()->pluck('name','id')->toArray();
+        // dd($categories->pluck('name','id')->toArray());
+    return view('manager.bookEditform',['categories'=>$categories,'mybook'=>$book]);
     }
 
     /**
@@ -80,7 +83,10 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        // dd($request);
+        $book->update($request->all());
+
+        return redirect(route('home'));
     }
 
     /**
