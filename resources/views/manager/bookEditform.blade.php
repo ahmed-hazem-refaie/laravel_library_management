@@ -13,7 +13,6 @@
 @section('content')
 
 
-
 {{ Form::open(['route' => 'category.store'])}}
 
     <div class="input-group mb-3">
@@ -26,7 +25,7 @@
     </div>
   </div>
 {{ Form::close() }}
-{{ Form::open(['route' => 'book.store'])}}
+{{ Form::model($mybook,['route' => ['book.update',$mybook],'method'=>'put'])}}
 <div class="container contact">
 	<div class="row">
 		<div class="col-md-3">
@@ -78,7 +77,7 @@
 				<div class="form-group">
 				  <div class="col-sm-offset-2 col-sm-10">
                     {{-- <button type="submit" class="btn btn-default">Submit</button> --}}
-                    {!! Form::submit('ADD Book', ['class'=>'btn btn-default btn btn-outline-secondary']) !!}
+                    {!! Form::submit('Edit Book', ['class'=>'btn btn-default btn btn-outline-secondary']) !!}
 
 				  </div>
 				</div>
