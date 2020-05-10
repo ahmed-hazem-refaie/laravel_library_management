@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Role;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -38,5 +38,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    public function roles(){
+        return $this->belongsToMany(Role::class ,'role_user' );
+    }
+    public function hasAnyRoles($roles){
+        if($this->roles()->whereIn('name',$roles)->first()){
+            return true;
+        }
+        return false;
+    }
+    public function hasRole($role){
+        if($this->roles()->where('name',$role)->first()){
+            return true;
+        }
+        return false;
+    }
 }

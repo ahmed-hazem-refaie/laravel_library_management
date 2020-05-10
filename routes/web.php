@@ -20,7 +20,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('activateuser/{id}','ManagerController@activateuser')->name('ACT_USR');
+// Route::get('activateuser/{id}','ManagerController@activateuser')->name('ACT_USR');
+
+Route::prefix('manager')->name('manager.')->middleware('can:manage-users')->group(function(){
+    Route::resource('user','ManagerController',['except' => 'show','create','store']);
+
+});
 Route::resource('category', 'CategoryController');
 Route::resource('book', 'BookController');
 
