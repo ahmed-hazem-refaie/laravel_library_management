@@ -23,4 +23,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('activateuser/{id}','ManagerController@activateuser')->name('ACT_USR');
 Route::resource('category', 'CategoryController');
 Route::resource('book', 'BookController');
+Route::get('image/{filename}', 'HomeController@displayImage')->name('image.displayImage');
 

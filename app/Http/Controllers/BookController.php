@@ -7,6 +7,7 @@ use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
+
 class BookController extends Controller
 {
     /**
@@ -28,6 +29,7 @@ class BookController extends Controller
     {
         // $w=Category::find();
             $categories = Category::all()->pluck('name','id')->toArray();
+
             // dd($categories->pluck('name','id')->toArray());
         return view('manager.bookform',['categories'=>$categories]);
     }
@@ -44,7 +46,11 @@ class BookController extends Controller
         $data['user_id']=1;
 
         // dd($data);
-        Book::create($data);
+        $data=Book::create($data);
+
+     $path= $request->file('image')->store('public/images');
+    $data->image=$path;
+    $data->save();
         return Redirect(route('home'))->with('status','done');
         // dd($request->all());
     }
