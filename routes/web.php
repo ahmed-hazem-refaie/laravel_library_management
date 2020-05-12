@@ -28,6 +28,7 @@ Route::prefix('manager')->name('manager.')->middleware('can:manage-users')->grou
 });
 Route::resource('category', 'CategoryController');
 Route::resource('book', 'BookController');
+Route::get('image/{filename}', 'HomeController@displayImage')->name('image.displayImage');
 
 Route::get('/status/update','ManagerController@updateStatus')->name('users.update.status');
 

@@ -26,7 +26,7 @@
     </div>
   </div>
 {{ Form::close() }}
-{{ Form::open(['route' => 'book.store'])}}
+{{ Form::open(['route' => 'book.store','enctype' => 'multipart/form-data','method'=>'post'])}}
 <div class="container contact">
 	<div class="row">
 		<div class="col-md-3">
@@ -78,6 +78,7 @@
 				<div class="form-group">
 				  <div class="col-sm-offset-2 col-sm-10">
                     {{-- <button type="submit" class="btn btn-default">Submit</button> --}}
+                    {!! Form::file('image') !!}
                     {!! Form::submit('ADD Book', ['class'=>'btn btn-default btn btn-outline-secondary']) !!}
 
 				  </div>

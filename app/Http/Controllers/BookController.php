@@ -7,6 +7,7 @@ use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
+
 class BookController extends Controller
 {
     /**
@@ -16,7 +17,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $books= Book::all();
+        return view('manager.books',['books'=>$books]);
+
     }
 
     /**
@@ -28,6 +31,7 @@ class BookController extends Controller
     {
         // $w=Category::find();
             $categories = Category::all()->pluck('name','id')->toArray();
+
             // dd($categories->pluck('name','id')->toArray());
         return view('manager.bookform',['categories'=>$categories]);
     }
@@ -44,8 +48,13 @@ class BookController extends Controller
         $data['user_id']=1;
 
         // dd($data);
-        Book::create($data);
-        return Redirect(route('home'))->with('status','done');
+        $data=Book::create($data);
+                if ($request->file('image')){
+     $path= $request->file('image')->store('public/images');
+    $data->image=$path;
+    $data->save();
+    }
+        return Redirect(route('book.index'))->with('status','done');
         // dd($request->all());
     }
 
@@ -71,6 +80,7 @@ class BookController extends Controller
         // dd($book);
         $categories = Category::all()->pluck('name','id')->toArray();
         // dd($categories->pluck('name','id')->toArray());
+
     return view('manager.bookEditform',['categories'=>$categories,'mybook'=>$book]);
     }
 
@@ -97,6 +107,9 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        // return route('book.index');
+        return Redirect(route('book.index'))->with('status','done');
+
     }
 }
