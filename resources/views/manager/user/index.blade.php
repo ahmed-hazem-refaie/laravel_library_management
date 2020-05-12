@@ -1,9 +1,10 @@
 @extends('layouts.app')
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header text-white bg-primary">Manager Control</div>
 
@@ -17,6 +18,7 @@
                             <th scope="col">Email</th>
                             <th scope="col">Roles</th>
                             <th scope="col">Actions</th>
+                            <th scope="col">isActive</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -39,14 +41,22 @@
                                             </a>
                                         @endcan
                                         @can('delete-users')
-                                            <form action="{{ route('manager.user.destroy' , $user)}}" method="POST" class="float-left">
+                                            <form action="{{ route('manager.user.destroy' , $user)}}" method="POST" class="float-left mr-3">
                                                 @csrf
                                                 {{method_field('DELETE')}}
                                                 <button type="submit" class="btn btn-danger ">Delete</button>
+
                                             </form>
                                         @endcan
+                                       
                                         
                                         
+                                        
+                                    </td>
+                                    <td class="bg-secondary">
+                                        <span >
+                                            <input type="checkbox" data-id="{{ $user->id }}" name="isActive" class="js-switch" {{ $user->isActive == 1 ? 'checked' : '' }}>
+                                        </span>
                                     </td>
                                 </tr>
                             @endforeach
@@ -58,4 +68,29 @@
         </div>
     </div>
 </div>
+<script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+    elems.forEach(function(html) {
+        let switchery = new Switchery(html,  { size: 'medium' });
+    });
+    
+    $(document).ready(function(){
+    $('.js-switch').change(function () {
+        let isActive = $(this).prop('checked') === true ? 1 : 0;
+        let userId = $(this).data('id');
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '{{ route('users.update.status') }}',
+            data: {'isActive': isActive, 'id': userId},
+            success: function (data) {
+                console.log(data.message);
+            }
+        });
+    });
+});
+    
+    </script>
+
+
 @endsection

@@ -13,10 +13,23 @@ class ManagerController extends Controller
         $this->middleware('auth');
     }
 
-    public function activateuser($id)
+    // public function activateuser($id)
+    // {
+    //     return view('manager.bookform');
+    // }
+  
+
+    public function updateStatus(Request $request)
     {
-        return view('manager.bookform');
+        $user = User::findOrFail($request->id);
+        $user->isActive = $request->isActive;
+        $user->save();
+
+        return response()->json(['message' => 'User status updated successfully.']);
     }
+
+
+
     public function index(){
         $users=User::with('roles')->get();
         // dd($users);
