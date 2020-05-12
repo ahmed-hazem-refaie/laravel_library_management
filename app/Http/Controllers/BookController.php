@@ -17,7 +17,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $books= Book::all();
+        return view('manager.books',['books'=>$books]);
+
     }
 
     /**
@@ -47,11 +49,12 @@ class BookController extends Controller
 
         // dd($data);
         $data=Book::create($data);
-
+                if ($request->file('image')){
      $path= $request->file('image')->store('public/images');
     $data->image=$path;
     $data->save();
-        return Redirect(route('home'))->with('status','done');
+    }
+        return Redirect(route('book.index'))->with('status','done');
         // dd($request->all());
     }
 
@@ -77,6 +80,7 @@ class BookController extends Controller
         // dd($book);
         $categories = Category::all()->pluck('name','id')->toArray();
         // dd($categories->pluck('name','id')->toArray());
+
     return view('manager.bookEditform',['categories'=>$categories,'mybook'=>$book]);
     }
 
@@ -103,6 +107,9 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        // return route('book.index');
+        return Redirect(route('book.index'))->with('status','done');
+
     }
 }
