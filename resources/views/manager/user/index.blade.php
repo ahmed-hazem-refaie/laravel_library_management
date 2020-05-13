@@ -9,7 +9,7 @@
                 <div class="card-header text-white bg-primary">Manager Control</div>
 
                 <div class="card-body">
-                    
+
                     <table class="table table-hover">
                         <thead class="thead-dark">
                           <tr>
@@ -33,7 +33,7 @@
                                             {{ $role->name }}
                                         @endforeach
                                     </td>
-                                    
+
                                     <td>
                                         @can('edit-users')
                                             <a href="{{ route('manager.user.edit',$user->id) }}">
@@ -48,10 +48,10 @@
 
                                             </form>
                                         @endcan
-                                       
-                                        
-                                        
-                                        
+
+
+
+
                                     </td>
                                     <td class="bg-secondary">
                                         <span >
@@ -60,7 +60,7 @@
                                     </td>
                                 </tr>
                             @endforeach
-                          
+
                         </tbody>
                       </table>
                 </div>
@@ -68,12 +68,14 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 <script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
     elems.forEach(function(html) {
         let switchery = new Switchery(html,  { size: 'medium' });
     });
-    
+
     $(document).ready(function(){
     $('.js-switch').change(function () {
         let isActive = $(this).prop('checked') === true ? 1 : 0;
@@ -84,12 +86,15 @@
             url: '{{ route('users.update.status') }}',
             data: {'isActive': isActive, 'id': userId},
             success: function (data) {
-                console.log(data.message);
+                console.log( data);
             }
+
         });
+        // $.ajax('http://localhost:8000/status/update').then(a=>console.log(a))
+        // $.ajax('http://localhost:8000/status/update',{'isActive': isActive, 'id': userId}).then(a=>console.log(a))
     });
 });
-    
+
     </script>
 
 

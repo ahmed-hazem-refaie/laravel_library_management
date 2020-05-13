@@ -30,6 +30,6 @@ Route::resource('category', 'CategoryController');
 Route::resource('book', 'BookController');
 Route::get('image/{filename}', 'HomeController@displayImage')->name('image.displayImage');
 
-Route::get('/status/update','ManagerController@updateStatus')->name('users.update.status');
+Route::get('status/update','ManagerController@updateStatus')->name('users.update.status');
 
 

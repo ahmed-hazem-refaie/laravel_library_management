@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ManagerController extends Controller
 {
-    
+
     public function __construct(){
         $this->middleware('auth');
     }
@@ -17,15 +17,25 @@ class ManagerController extends Controller
     // {
     //     return view('manager.bookform');
     // }
-  
+
 
     public function updateStatus(Request $request)
     {
         $user = User::findOrFail($request->id);
         $user->isActive = $request->isActive;
-        $user->save();
+        // $user->save();
 
+        // return response()->json(['message' => 'User status updated successfully.']);
+            // dd($_GET);
+            if ($user->save()){
+                // return response('done') ;
         return response()->json(['message' => 'User status updated successfully.']);
+
+            }else{
+                return response()->json(['message' => 'User status update faill.']);
+            }
+            return $request->id;
+
     }
 
 
@@ -36,7 +46,7 @@ class ManagerController extends Controller
         return view('manager.user.index')->with('users',$users);
     }
 
-    
+
 
     public function edit(User $user){
         if(Gate::denies('edit-users')){
@@ -60,7 +70,7 @@ class ManagerController extends Controller
         $user->email = $request->email;
         $user->save();
         return redirect()->route('manager.user.index');
-        
+
     }
 
     public function destroy(User $user){
