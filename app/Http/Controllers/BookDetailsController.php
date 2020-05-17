@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\UserFavourite;
+use App\Book;
 use Illuminate\Http\Request;
 
-class UserFavouriteController extends Controller
+class BookDetailsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class UserFavouriteController extends Controller
      */
     public function index()
     {
-        //
+        $books= Book::all();
+        return view('books.index',['books'=>$books]);
     }
 
     /**
@@ -41,10 +42,10 @@ class UserFavouriteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\UserFavourite  $userFavourite
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(UserFavourite $userFavourite)
+    public function show($id)
     {
         //
     }
@@ -52,10 +53,10 @@ class UserFavouriteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\UserFavourite  $userFavourite
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserFavourite $userFavourite)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +65,10 @@ class UserFavouriteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\UserFavourite  $userFavourite
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserFavourite $userFavourite)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +76,10 @@ class UserFavouriteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\UserFavourite  $userFavourite
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserFavourite $userFavourite)
+    public function destroy($id)
     {
         //
     }
