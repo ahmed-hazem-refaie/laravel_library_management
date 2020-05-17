@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/',function (){
+    return view("welcome");
 });
+Route::middleware("auth")->group(function (){
+    Route::get('/home',"HomeController@index");
+//Route::get('/userBooks',"BookController@show");
+    Route::resource("userBooks","UserBookController");
+    Route::resource("userFavorites","UserFavouriteController");
+});
+
 
 Auth::routes();
 

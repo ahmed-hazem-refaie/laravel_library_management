@@ -14,7 +14,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -46,7 +46,8 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+//        dd("mohamed");
+        return view("userBooks.show");
     }
 
     /**

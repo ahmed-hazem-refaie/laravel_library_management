@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
+use App\User;
 use App\UserBook;
+use App\UserFavourite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserBookController extends Controller
 {
@@ -14,7 +19,10 @@ class UserBookController extends Controller
      */
     public function index()
     {
-        //
+//        $userBooks = User::find(Auth::id())->books()->get();
+//        $userFavourites = User::find(Auth::id())->bookFavorite()->pluck("book_id")->all();
+//        dd($userBooks,$userFavourites);
+        return view("userBooks.index");
     }
 
     /**

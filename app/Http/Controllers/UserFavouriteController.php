@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\UserFavourite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserFavouriteController extends Controller
 {
@@ -14,7 +16,9 @@ class UserFavouriteController extends Controller
      */
     public function index()
     {
-        //
+        $userFavourites = User::find(Auth::id())->bookFavorite()->get();
+//        dd($userFavourites);
+        return view("userFavourites.index",["userFavourites" => $userFavourites]);
     }
 
     /**
