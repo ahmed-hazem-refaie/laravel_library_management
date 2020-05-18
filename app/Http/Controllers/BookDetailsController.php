@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\BookRate;
+use App\Book;
 use Illuminate\Http\Request;
 
-class BookRateController extends Controller
+class BookDetailsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class BookRateController extends Controller
      */
     public function index()
     {
-        //
+        $books= Book::all();
+        return view('books.index',['books'=>$books]);
     }
 
     /**
@@ -24,7 +25,7 @@ class BookRateController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -41,10 +42,10 @@ class BookRateController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\BookRate  $bookRate
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(BookRate $bookRate)
+    public function show($id)
     {
         //
     }
@@ -52,10 +53,10 @@ class BookRateController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BookRate  $bookRate
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(BookRate $bookRate)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +65,10 @@ class BookRateController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BookRate  $bookRate
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BookRate $bookRate)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +76,10 @@ class BookRateController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BookRate  $bookRate
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BookRate $bookRate)
+    public function destroy($id)
     {
         //
     }
