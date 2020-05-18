@@ -8,9 +8,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Book extends Model
 {
     use SoftDeletes;
-    // protected $fillable = array('*');
+    protected $table = "Books";
     protected $guarded = ['id'];
-
-
-
+    protected $fillable = [
+        'bookName',
+        'pricePerDay',
+        'author',
+        'description',
+        'image',
+        'count',
+        'rate',
+        'category_id',
+        'user_id',
+    ];
+    public function users(){
+        return $this->belongsToMany(User::class,"user_books","book_id","user_id");
+    }
 }

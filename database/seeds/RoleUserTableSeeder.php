@@ -12,10 +12,7 @@ class RoleUserTableSeeder extends Seeder
      */
     public function run()
     {
-        Role::truncate();
 
-        Role::create(['name' => 'manager']);
-        Role::create(['name' => 'user']);
 
         DB::table('role_user')->insert([
             'role_id' => '1',

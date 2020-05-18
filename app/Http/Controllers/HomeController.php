@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,7 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+//        $books = Book::all();
+//        $userFavourites = User::find(Auth::id())->bookFavorite()->pluck("book_id")->all();
+        return view('home.index');
     }
-
 }
