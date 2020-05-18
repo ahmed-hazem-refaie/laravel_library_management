@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +28,16 @@ Route::middleware("auth")->group(function (){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('activateuser/{id}','ManagerController@activateuser')->name('ACT_USR');
+
+Route::prefix('manager')->name('manager.')->middleware('can:manage-users')->group(function(){
+    Route::resource('user','ManagerController',['except' => 'show','create','store']);
+
+});
+Route::resource('category', 'CategoryController');
+Route::resource('book', 'BookController');
+Route::get('image/{filename}', 'HomeController@displayImage')->name('image.displayImage');
+
+Route::get('status/update','ManagerController@updateStatus')->name('users.update.status');
+
+

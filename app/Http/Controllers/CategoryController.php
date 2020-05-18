@@ -24,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('manager.bookform');
     }
 
     /**
@@ -35,7 +35,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'bail|required|unique:categories|max:255',
+        ]);
+        // dd($request->name);
+            Category::create($request->all());
+            return redirect(route('home'))->with('status','Done');
     }
 
     /**

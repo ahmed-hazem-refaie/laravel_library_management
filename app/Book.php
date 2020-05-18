@@ -9,6 +9,7 @@ class Book extends Model
 {
     use SoftDeletes;
     protected $table = "Books";
+    protected $guarded = ['id'];
     protected $fillable = [
         'bookName',
         'pricePerDay',
