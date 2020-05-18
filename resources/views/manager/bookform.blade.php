@@ -79,6 +79,8 @@
 				  <div class="col-sm-offset-2 col-sm-10">
                     {{-- <button type="submit" class="btn btn-default">Submit</button> --}}
                     {!! Form::file('image') !!}
+
+                    {{-- <input type="file" name="image[]" multiple> --}}
                     {!! Form::submit('ADD Book', ['class'=>'btn btn-default btn btn-outline-secondary']) !!}
 
 				  </div>

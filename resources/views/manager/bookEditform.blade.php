@@ -82,7 +82,7 @@ sssssss {{$mybook->image}}
 				  <div class="col-sm-offset-2 col-sm-10">
                     {{-- <button type="submit" class="btn btn-default">Submit</button> --}}
                     {!! Form::submit('Edit Book', ['class'=>'btn btn-default btn btn-outline-secondary']) !!}
-                    <img src="{{ asset($mybook->image) }}" alt="jj" title="ggx">
+                    <img src="/myimages/{{ $mybook->image }}" alt="jj" title="ggx">
 
 				  </div>
 				</div>
