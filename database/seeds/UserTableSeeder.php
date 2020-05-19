@@ -12,15 +12,7 @@ class UserTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        
-        // User::truncate();
-       
-        // DB::table('role_user')->truncate();
-
-        // $managerRole=Role::where('name','manager')->first();
-        // $userRole=Role::where('name','user')->first();
-
+    {    
         $manager = User::create([
             'name' =>'Manager user',
             'email' => 'manager@manager.com',
@@ -32,8 +24,5 @@ class UserTableSeeder extends Seeder
             'email' => 'user@user.com',
             'password' =>Hash::make('password')
         ]);
-
-        // $manager->roles()->attach($managerRole);
-        // $user->roles()->attach($userRole);
     }
 }

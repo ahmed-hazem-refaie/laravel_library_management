@@ -6819,7 +6819,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.loadSearch[data-v-754b2df6]{\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    z-index: 9999;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    background: white;\r\n    opacity: 80%;\r\n    min-height: 100%;\n}\n.loadSearch i[data-v-754b2df6]{\r\n    z-index: 99999;\r\n    color: black;\r\n    font-size: 60px;\n}\r\n", ""]);
+exports.push([module.i, "\n.loadSearch[data-v-754b2df6]{\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    z-index: 9999;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background: white;\n    opacity: 80%;\n    min-height: 100%;\n}\n.loadSearch i[data-v-754b2df6]{\n    z-index: 99999;\n    color: black;\n    font-size: 60px;\n}\n", ""]);
 
 // exports
 
@@ -52603,8 +52603,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\My Works\ITI\Laravel\laravel_library_management\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\My Works\ITI\Laravel\laravel_library_management\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /media/mohamed-iti/ITI/Laravel/laravel_library_management/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /media/mohamed-iti/ITI/Laravel/laravel_library_management/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

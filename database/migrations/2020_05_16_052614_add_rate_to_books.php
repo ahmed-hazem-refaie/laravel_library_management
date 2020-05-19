@@ -14,7 +14,7 @@ class AddRateToBooks extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->unsignedInteger("rate")->nullable();
+            $table->float("rate")->nullable();
         });
     }
 
