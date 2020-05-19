@@ -47,6 +47,5 @@ Route::resource('books', 'BookDetailsController');
 
 Route::get('image/{filename}', 'HomeController@displayImage')->name('image.displayImage');
 
-Route::get('status/update','ManagerController@updateStatus')->name('users.update.status');
-
+Route::get('changeStatus', 'ManagerController@changeStatus');
 

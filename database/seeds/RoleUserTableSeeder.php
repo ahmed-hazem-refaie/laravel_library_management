@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use App\Role;
 use App\User;
+use Illuminate\Support\Facades\DB;
+
 class RoleUserTableSeeder extends Seeder
 {
     /**

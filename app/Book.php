@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Book extends Model
 {
     use SoftDeletes;
-    protected $table = "Books";
+    protected $table = "books";
     protected $guarded = ['id'];
     protected $fillable = [
         'bookName',
