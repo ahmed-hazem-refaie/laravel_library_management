@@ -32,11 +32,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('manager')->name('manager.')->middleware('can:manage-users')->group(function(){
     Route::resource('user','ManagerController',['except' => 'show','create','store']);
-
+    Route::resource('category', 'CategoryController');
+    Route::resource('book', 'BookController');
 });
 
-Route::resource('category', 'CategoryController');
-Route::resource('book', 'BookController');
+// Route::resource('category', 'CategoryController');
+// Route::resource('book', 'BookController');
 
 
 
