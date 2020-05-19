@@ -13,29 +13,33 @@ class ManagerController extends Controller
         $this->middleware('auth');
     }
 
-    // public function activateuser($id)
+   
+    // public function updateStatus(Request $request)
     // {
-    //     return view('manager.bookform');
+    //     $user = User::findOrFail($request->id);
+    //     $user->isActive = $request->isActive;
+    //     // $user->save();
+
+    //     // return response()->json(['message' => 'User status updated successfully.']);
+    //         // dd($_GET);
+    //         if ($user->save()){
+    //             // return response('done') ;
+    //     return response()->json(['message' => 'User status updated successfully.']);
+
+    //         }else{
+    //             return response()->json(['message' => 'User status update faill.']);
+    //         }
+    //         return $request->id;
+
     // }
 
-
-    public function updateStatus(Request $request)
+    public function changeStatus(Request $request)
     {
-        $user = User::findOrFail($request->id);
+        $user = User::find($request->id);
         $user->isActive = $request->isActive;
-        // $user->save();
-
-        // return response()->json(['message' => 'User status updated successfully.']);
-            // dd($_GET);
-            if ($user->save()){
-                // return response('done') ;
-        return response()->json(['message' => 'User status updated successfully.']);
-
-            }else{
-                return response()->json(['message' => 'User status update faill.']);
-            }
-            return $request->id;
-
+        $user->save();
+  
+        return response()->json(['success'=>'Status change successfully.']);
     }
 
 
