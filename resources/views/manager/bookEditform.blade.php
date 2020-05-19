@@ -13,7 +13,7 @@
 @section('content')
 
 
-{{ Form::open(['route' => 'category.store'])}}
+{{ Form::open(['route' => 'manager.category.store'])}}
 
     <div class="input-group mb-3">
         {!! Form::text('name', null, ['required'=>'true','class'=>"form-control",'placeholder'=>"Recipient's username",'aria-label'=>"Recipient's username", 'aria-describedby'=>"button-addon2"]) !!}
@@ -28,7 +28,7 @@
 
 sssssss {{$mybook->image}}
 
-{{ Form::model($mybook,['route' => ['book.update',$mybook],'method'=>'put'])}}
+{{ Form::model($mybook,['route' => ['manager.book.update',$mybook],'method'=>'put'])}}
 
 <div class="container contact">
 	<div class="row">

@@ -70,7 +70,7 @@ class BookController extends Controller
     $data->image=$book;
     $data->save();
     }
-        return Redirect(route('book.index'))->with('status','done');
+        return Redirect(route('manager.book.index'))->with('status','done');
         // dd($request->all());
     }
 
@@ -126,7 +126,7 @@ class BookController extends Controller
     {
         $book->delete();
         // return route('book.index');
-        return Redirect(route('book.index'))->with('status','done');
+        return Redirect(route('manager.book.index'))->with('status','done');
 
     }
 }

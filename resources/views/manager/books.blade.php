@@ -17,8 +17,8 @@
         <h5 class="card-title">Book  Price: <li>{{ $user->bookName }}</li></h5>
 
 
-        {!! Form::open(['route' => ['book.destroy',$user->id],'method'=>'delete']) !!}
-        <a href="/book/{{ $user->id}}/edit" class="btn btn-primary">Go Update</a>
+        {!! Form::open(['route' => ['manager.book.destroy',$user->id],'method'=>'delete']) !!}
+        <a href="/manager/book/{{ $user->id}}/edit" class="btn btn-primary">Go Update</a>
 
             {!!Form::submit('Delete Me!',['class'=>["btn btn-danger"]])!!}
         {!! Form::close() !!}

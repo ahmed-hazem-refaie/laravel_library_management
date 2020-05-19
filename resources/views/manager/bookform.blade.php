@@ -14,7 +14,7 @@
 
 
 
-{{ Form::open(['route' => 'category.store'])}}
+{{ Form::open(['route' => 'manager.category.store'])}}
 
     <div class="input-group mb-3">
         {!! Form::text('name', null, ['required'=>'true','class'=>"form-control",'placeholder'=>"Recipient's username",'aria-label'=>"Recipient's username", 'aria-describedby'=>"button-addon2"]) !!}
@@ -26,7 +26,7 @@
     </div>
   </div>
 {{ Form::close() }}
-{{ Form::open(['route' => 'book.store','enctype' => 'multipart/form-data','method'=>'post'])}}
+{{ Form::open(['route' => 'manager.book.store','enctype' => 'multipart/form-data','method'=>'post'])}}
 <div class="container contact">
 	<div class="row">
 		<div class="col-md-3">
