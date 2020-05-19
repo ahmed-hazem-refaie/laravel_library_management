@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 /*
@@ -13,9 +14,16 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/',function (){
+    return view("welcome");
 });
+Route::middleware("auth")->group(function (){
+    Route::get('/home',"HomeController@index");
+//Route::get('/userBooks',"BookController@show");
+    Route::resource("userBooks","UserBookController");
+    Route::resource("userFavorites","UserFavouriteController");
+});
+
 
 Auth::routes();
 
@@ -26,8 +34,16 @@ Route::prefix('manager')->name('manager.')->middleware('can:manage-users')->grou
     Route::resource('user','ManagerController',['except' => 'show','create','store']);
 
 });
+
 Route::resource('category', 'CategoryController');
 Route::resource('book', 'BookController');
+
+
+
+// Book details Controller [For user View ==> Ashraf Amer]
+Route::resource('books', 'BookDetailsController');
+
+
 Route::get('image/{filename}', 'HomeController@displayImage')->name('image.displayImage');
 
 Route::get('status/update','ManagerController@updateStatus')->name('users.update.status');

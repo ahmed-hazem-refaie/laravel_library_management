@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get("/home","Api\HomeController@index");
+Route::get("/search","Api\HomeController@search");
+Route::post("/makeLike","Api\HomeController@makeLike");
+Route::post("/makeLikeFavourite","Api\FavouriteController@makeLike");
+Route::get("/userFavorites","Api\FavouriteController@index");
+Route::get("/myBooks","Api\MyBooksController@index");
+Route::post("/makeLikeMyBooks","Api\MyBooksController@makeLikeMyBooks");
