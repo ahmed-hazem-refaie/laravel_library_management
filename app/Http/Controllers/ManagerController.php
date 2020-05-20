@@ -14,33 +14,27 @@ class ManagerController extends Controller
     }
 
    
-    // public function updateStatus(Request $request)
-    // {
-    //     $user = User::findOrFail($request->id);
-    //     $user->isActive = $request->isActive;
-    //     // $user->save();
-
-    //     // return response()->json(['message' => 'User status updated successfully.']);
-    //         // dd($_GET);
-    //         if ($user->save()){
-    //             // return response('done') ;
-    //     return response()->json(['message' => 'User status updated successfully.']);
-
-    //         }else{
-    //             return response()->json(['message' => 'User status update faill.']);
-    //         }
-    //         return $request->id;
-
-    // }
-
-    public function changeStatus(Request $request)
+    public function updateStatus(Request $request)
     {
-        $user = User::find($request->id);
+        $user = User::findOrFail($request->id);
         $user->isActive = $request->isActive;
         $user->save();
-  
-        return response()->json(['success'=>'Status change successfully.']);
+        // $user->save();
+
+        // return response()->json(['message' => 'User status updated successfully.']);
+            // dd($_GET);
+            if ($user->save()){
+                // return response('done') ;
+        return response()->json(['message' => 'User status updated successfully.']);
+
+            }else{
+                return response()->json(['message' => 'User status update faill.']);
+            }
+            return $request->id;
+
     }
+
+    
 
 
 

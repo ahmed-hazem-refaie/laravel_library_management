@@ -148,8 +148,11 @@
         </main>
     </div>
 </body>
-@if($usersChart)
+@isset($usersChart)
+   @if($usersChart)
 {!! $usersChart->script() !!}
 @endif
+
+@endisset
 
 </html>
