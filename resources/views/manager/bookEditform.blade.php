@@ -34,7 +34,14 @@ sssssss {{$mybook->image}}
 	<div class="row">
 		<div class="col-md-3">
 			<div class="contact-info">
-				<img src="https://img.freepik.com/free-vector/abstract-book-pencil-logo_10724-10.jpg?size=338&ext=jpg" alt="image" class="imgweb"/>
+                @if ($mybook->image)
+                <img src="/myimages/{{ $mybook->image }}" alt="https://img.freepik.com/free-vector/abstract-book-pencil-logo_10724-10.jpg?size=338&ext=jpg" alt="image" class="imgweb" title="ggx">
+
+                @else
+                <img src="https://img.freepik.com/free-vector/abstract-book-pencil-logo_10724-10.jpg?size=338&ext=jpg" alt="image" class="imgweb" title="ggx"/>
+
+                @endif
+
 				<h2>Contact Us</h2>
 				<h4>We would love to hear from you !</h4>
 			</div>

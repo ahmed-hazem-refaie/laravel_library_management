@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\Category;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
@@ -35,9 +36,10 @@ class BookController extends Controller
     {
         // $w=Category::find();
             $categories = Category::all()->pluck('name','id')->toArray();
+            $users=User::with('roles')->get();
 
             // dd($categories->pluck('name','id')->toArray());
-         return view('manager.bookform',['categories'=>$categories]);
+         return view('manager.bookform',['categories'=>$categories,'users'=>$users]);
     }
 
     /**

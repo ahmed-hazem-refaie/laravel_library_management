@@ -6,8 +6,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+
+
         <div class="col-md-12">
             <div class="card">
+
                 <div class="card-header text-white bg-primary">Manager Control</div>
 
                 <div class="card-body">
@@ -57,7 +60,7 @@
                                     </td>
                                     <td>
                                         <input data-id="{{$user->id}}" class="toggle-class" type="checkbox" data-onstyle="success"
-                                         data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" 
+                                         data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive"
                                          {{ $user->isActive ? 'checked' : '' }}>
                                      </td>
                                 </tr>
@@ -70,12 +73,18 @@
         </div>
     </div>
 </div>
+<br>
+<br>
+<br>
+
+@yield('name')
+
 <script>
     $(function() {
       $('.toggle-class').change(function() {
-          var status = $(this).prop('checked') == true ? 1 : 0; 
-          var user_id = $(this).data('id'); 
-           
+          var status = $(this).prop('checked') == true ? 1 : 0;
+          var user_id = $(this).data('id');
+
           $.ajax({
               type: "GET",
               dataType: "json",

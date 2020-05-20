@@ -49,3 +49,4 @@ Route::get('image/{filename}', 'HomeController@displayImage')->name('image.displ
 
 Route::get('changeStatus', 'ManagerController@changeStatus');
 
+Route::get('users', 'UserChartController@index')->name('chart');
