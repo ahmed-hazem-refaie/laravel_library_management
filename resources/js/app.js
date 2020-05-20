@@ -39,3 +39,4 @@ Vue.component('my-books-component', require('./components/MyBooksComponent.vue')
 const app = new Vue({
     el: '#app',
 });
+
