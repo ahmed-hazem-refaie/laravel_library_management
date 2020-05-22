@@ -13,7 +13,7 @@
 @section('content')
 
 
-{{ Form::open(['route' => 'category.store'])}}
+{{ Form::open(['route' => 'manager.category.store'])}}
 
     <div class="input-group mb-3">
         {!! Form::text('name', null, ['required'=>'true','class'=>"form-control",'placeholder'=>"Recipient's username",'aria-label'=>"Recipient's username", 'aria-describedby'=>"button-addon2"]) !!}
@@ -28,13 +28,20 @@
 
 sssssss {{$mybook->image}}
 
-{{ Form::model($mybook,['route' => ['book.update',$mybook],'method'=>'put'])}}
+{{ Form::model($mybook,['route' => ['manager.book.update',$mybook],'method'=>'put'])}}
 
 <div class="container contact">
 	<div class="row">
 		<div class="col-md-3">
 			<div class="contact-info">
-				<img src="https://img.freepik.com/free-vector/abstract-book-pencil-logo_10724-10.jpg?size=338&ext=jpg" alt="image" class="imgweb"/>
+                @if ($mybook->image)
+                <img src="/myimages/{{ $mybook->image }}" alt="https://img.freepik.com/free-vector/abstract-book-pencil-logo_10724-10.jpg?size=338&ext=jpg" alt="image" class="imgweb" title="ggx">
+
+                @else
+                <img src="https://img.freepik.com/free-vector/abstract-book-pencil-logo_10724-10.jpg?size=338&ext=jpg" alt="image" class="imgweb" title="ggx"/>
+
+                @endif
+
 				<h2>Contact Us</h2>
 				<h4>We would love to hear from you !</h4>
 			</div>
@@ -82,7 +89,7 @@ sssssss {{$mybook->image}}
 				  <div class="col-sm-offset-2 col-sm-10">
                     {{-- <button type="submit" class="btn btn-default">Submit</button> --}}
                     {!! Form::submit('Edit Book', ['class'=>'btn btn-default btn btn-outline-secondary']) !!}
-                    <img src="{{ asset($mybook->image) }}" alt="jj" title="ggx">
+                    <img src="/myimages/{{ $mybook->image }}" alt="jj" title="ggx">
 
 				  </div>
 				</div>

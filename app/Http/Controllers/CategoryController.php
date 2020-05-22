@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('manager.listcategory',['data'=>Category::all()]);
     }
 
     /**
@@ -40,7 +40,8 @@ class CategoryController extends Controller
         ]);
         // dd($request->name);
             Category::create($request->all());
-            return redirect(route('home'))->with('status','Done');
+            // return redirect(route('home'))->with('status','Done');
+            return redirect()->back()->with('status','done');
     }
 
     /**
@@ -51,7 +52,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+
     }
 
     /**
@@ -62,7 +63,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        // dd($category->name);
+        return view('manager.listcategory',['obj'=>$category,'data'=>Category::all()]);
     }
 
     /**
@@ -74,7 +76,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+
+
+            $request->validate([
+            'name' => 'bail|required|unique:categories|max:255,'.$category.',id'
+        ]);
+         $category->update($request->all());
+
+
+        return view('manager.listcategory',['data'=>Category::all()]);
     }
 
     /**
@@ -85,6 +95,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+
+        $category->delete();
+        return redirect(route('manager.category.index'));
     }
 }

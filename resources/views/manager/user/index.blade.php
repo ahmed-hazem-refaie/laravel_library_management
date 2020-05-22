@@ -4,8 +4,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+
+
         <div class="col-md-12">
             <div class="card">
+
                 <div class="card-header text-white bg-primary">Manager Control</div>
 
                 <div class="card-body">
@@ -53,6 +56,11 @@
 
 
                                     </td>
+                                    {{-- <td>
+                                        <input data-id="{{$user->id}}" class="toggle-class" type="checkbox" data-onstyle="success"
+                                         data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive"
+                                         {{ $user->isActive ? 'checked' : '' }}>
+                                     </td> --}}
                                     <td class="bg-secondary">
                                         <span >
                                             <input type="checkbox" data-id="{{ $user->id }}" name="isActive" class="js-switch" {{ $user->isActive == 1 ? 'checked' : '' }}>
@@ -68,10 +76,39 @@
         </div>
     </div>
 </div>
+<br>
+<br>
+<br>
+
+@yield('name')
+
+{{-- <script>
+    $(function() {
+      $('.toggle-class').change(function() {
+          var status = $(this).prop('checked') == true ? 1 : 0;
+          var user_id = $(this).data('id');
+
+          $.ajax({
+              type: "GET",
+              dataType: "json",
+              url: '/changeStatus',
+              data: {'isActive': status, 'user_id': user_id},
+              success: function(data){
+                console.log(data.success)
+              }
+          });
+      })
+    })
+  </script> --}}
+
+
+@endsection
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-<script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
-
+<script>
+    let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
     elems.forEach(function(html) {
         let switchery = new Switchery(html,  { size: 'medium' });
     });
@@ -86,16 +123,14 @@
             url: '{{ route('users.update.status') }}',
             data: {'isActive': isActive, 'id': userId},
             success: function (data) {
+                console.log(data.message);
                 console.log( data);
             }
-
         });
-        // $.ajax('http://localhost:8000/status/update').then(a=>console.log(a))
-        // $.ajax('http://localhost:8000/status/update',{'isActive': isActive, 'id': userId}).then(a=>console.log(a))
+        $.ajax('http://localhost:8000/status/update').then(a=>console.log(a))
+        $.ajax('http://localhost:8000/status/update',{'isActive': isActive, 'id': userId}).then(a=>console.log(a))
     });
 });
 
     </script>
 
-
-@endsection

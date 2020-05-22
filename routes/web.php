@@ -34,11 +34,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('activateuser/{id}','ManagerController@activateuser')->name('ACT_USR');
 
-Route::prefix('manager')->name('manager.')->middleware('can:manage-users')->group(function () {
-    Route::resource('user', 'ManagerController', ['except' => 'show', 'create', 'store']);
+Route::prefix('manager')->name('manager.')->middleware('can:manage-users')->group(function(){
+    Route::resource('user','ManagerController',['except' => 'show','create','store']);
+    Route::resource('category', 'CategoryController');
+    Route::resource('book', 'BookController');
 });
 
-
+// Route::resource('category', 'CategoryController');
+// Route::resource('book', 'BookController');
 
 
 
@@ -48,4 +51,10 @@ Route::prefix('manager')->name('manager.')->middleware('can:manage-users')->grou
 
 Route::get('image/{filename}', 'HomeController@displayImage')->name('image.displayImage');
 
-Route::get('status/update', 'ManagerController@updateStatus')->name('users.update.status');
+// Route::get('changeStatus', 'ManagerController@changeStatus');
+
+Route::get('users', 'UserChartController@index')->name('chart');
+
+
+Route::get('/status/update','ManagerController@updateStatus')->name('users.update.status');
+Route::get('status/update','ManagerController@updateStatus')->name('users.update.status');

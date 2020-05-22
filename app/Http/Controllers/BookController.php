@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
+use  Uuid;
+
 
 class BookController extends Controller
 {
@@ -20,6 +24,7 @@ class BookController extends Controller
      */
     public function index()
     {
+        // dd(Uuid::generate()->string,Uuid::generate()->string );
         $books = Book::all();
         return view('manager.books', ['books' => $books]);
     }
@@ -33,9 +38,10 @@ class BookController extends Controller
     {
         // $w=Category::find();
         $categories = Category::all()->pluck('name', 'id')->toArray();
+        $users = User::with('roles')->get();
 
         // dd($categories->pluck('name','id')->toArray());
-        return view('manager.bookform', ['categories' => $categories]);
+        return view('manager.bookform', ['categories' => $categories, 'users' => $users]);
     }
 
     /**
@@ -51,12 +57,24 @@ class BookController extends Controller
 
         // dd($data);
         $data = Book::create($data);
-        if ($request->file('image')) {
-            $path = $request->file('image')->store('public/images');
-            $data->image = $path;
+        if ($files = $request->file('image')) {
+            //  $path= $request->file('image')->store('images');
+            $desti = 'myimages/';
+            $book = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($desti, $book);
+            //  dd($path);
+            //  ->store(public_path('images'));
+            //  ->store('/images');
+            // $imageName = time().'.'.request()->image->getClientOriginalExtension();
+
+
+
+            // request()->image->move(public_path('images'), $imageName);
+            //  $request->file('image')->
+            $data->image = $book;
             $data->save();
         }
-        return Redirect(route('book.index'))->with('status', 'done');
+        return Redirect(route('manager.book.index'))->with('status', 'done');
         // dd($request->all());
     }
 
@@ -69,9 +87,9 @@ class BookController extends Controller
     public function show(Book $book)
     {
         $comments = $book->comments()->with('user')->get();
-        $userRate = $book->rates()->with('userRate')->where('user_id',Auth::id())->select('rate')->get();
-        $relativeBook = Book::where([['category_id', $book['category_id']],['id','!=',$book['id']]])->limit(5)->get(); 
-        $like=User::find(Auth::id())->bookFavorite()->where('book_id',$book->id)->get();     
+        $userRate = $book->rates()->with('userRate')->where('user_id', Auth::id())->select('rate')->get();
+        $relativeBook = Book::where([['category_id', $book['category_id']], ['id', '!=', $book['id']]])->limit(5)->get();
+        $like = User::find(Auth::id())->bookFavorite()->where('book_id', $book->id)->get();
         $data = [
             'comments' => $comments,
             'rate' => $userRate,
@@ -92,6 +110,8 @@ class BookController extends Controller
     public function edit(Book $book)
     {
         // dd($book);
+        $this->authorize('update-book');
+        //
         $categories = Category::all()->pluck('name', 'id')->toArray();
         // dd($categories->pluck('name','id')->toArray());
 
@@ -109,7 +129,6 @@ class BookController extends Controller
     {
         // dd($request);
         $book->update($request->all());
-
         return redirect(route('home'));
     }
 
@@ -123,6 +142,6 @@ class BookController extends Controller
     {
         $book->delete();
         // return route('book.index');
-        return Redirect(route('book.index'))->with('status', 'done');
+        return Redirect(route('manager.book.index'))->with('status', 'done');
     }
 }
