@@ -5,6 +5,8 @@
  */
 
 require('./bootstrap');
+import $ from 'jquery';
+// window.$ = window.jQuery = $;
 
 window.Vue = require('vue');
 Vue.component('pagination', require('laravel-vue-pagination'));
@@ -39,3 +41,48 @@ Vue.component('my-books-component', require('./components/MyBooksComponent.vue')
 const app = new Vue({
     el: '#app',
 });
+
+$(document).ready(function () {
+
+
+    $('.rate').on('click', function (e) {
+
+        console.log($(this).data('rate'));
+        console.log($(this).data('book'));
+        let val = $(this).data('rate');
+        let id = $(this).data('book');
+        axios.post('/bookRate ', {
+            rate: val,
+            book_id: id
+        })
+            .then(response =>{
+                console.log(response);
+                $(this).removeClass('fa-star-o').addClass('fa-star');
+                $(this).prevAll('i').removeClass('fa-star-o').addClass('fa-star');
+                $(this).nextAll('i').addClass('fa-star-o');
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    })
+
+    $('.like').on('click', function (e) {
+
+        let book_id = $(this).data('book');
+        let user_id = $(this).data('user');
+        axios.post("/api/makeLike", {
+            book_id: book_id,
+            user_id: user_id
+        })
+            .then(response => {
+                $(this).toggleClass('fa-heart fa-heart-o');
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    })
+
+
+}) 

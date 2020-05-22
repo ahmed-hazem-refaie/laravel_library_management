@@ -35,7 +35,9 @@ class BookCommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        BookComment::create($request->all());
+        return redirect()->back()->with('success','Comment Has been added Successfully');
     }
 
     /**

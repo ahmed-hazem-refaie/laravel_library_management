@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use App\BookRate;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookRateController extends Controller
 {
@@ -24,7 +27,6 @@ class BookRateController extends Controller
      */
     public function create()
     {
-
     }
 
     /**
@@ -35,7 +37,16 @@ class BookRateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rate = BookRate::where([['user_id', Auth::id()], ['book_id', $request->book_id]]);
+        //    dd($rate->count());
+        if ($rate->count() == 0) {
+            User::find(Auth::id())->myRate()->create($request->all());
+        } else {
+            User::find(Auth::id())->myRate()->where('book_id', $request->book_id)->update(['rate' => $request->rate]);
+        }
+        $sumRate = BookRate::where('book_id', $request->book_id)->avg('rate');
+        Book::find($request->book_id)->update(['rate' => $sumRate]);        
+        return response()->json(['rate' => $request->rate]);
     }
 
     /**

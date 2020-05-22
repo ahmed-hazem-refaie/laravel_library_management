@@ -44,7 +44,11 @@ class User extends Authenticatable
     public function bookFavorite(){
         return $this->belongsToMany(Book::class,"user_favourites","user_id","book_id");
     }
-    public function roles(){
+    public function myRate()
+    {
+        return $this->hasMany(BookRate::class);
+    }
+    public function roles(){        
         return $this->belongsToMany(Role::class ,'role_user' );
     }
     public function hasAnyRoles($roles){

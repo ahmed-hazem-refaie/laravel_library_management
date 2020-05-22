@@ -1980,15 +1980,70 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "FavoriteComponent",
-  props: ['user_id'],
+  props: ["user_id"],
   data: function data() {
     return {
       booksData: [],
       load: false,
-      book_id: '',
+      book_id: "",
       checkBooks: false
     };
   },
@@ -1997,7 +2052,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.books = [];
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/userFavorites?user_id=' + this.user_id).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/userFavorites?user_id=" + this.user_id).then(function (response) {
         console.log(response.data);
         _this.booksData = response.data.books;
         _this.checkBooks = _this.booksData.length === 0;
@@ -2011,9 +2066,9 @@ __webpack_require__.r(__webpack_exports__);
 
       this.book_id = id;
       this.load = true;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/makeLikeFavourite', {
-        'book_id': this.book_id,
-        'user_id': this.user_id
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/makeLikeFavourite", {
+        book_id: this.book_id,
+        user_id: this.user_id
       }).then(function (response) {
         console.log(response.data);
         _this2.booksData = response.data.books;
@@ -2126,19 +2181,136 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "IndexComponent",
-  props: ['user_id'],
+  props: ["user_id"],
   data: function data() {
     return {
-      booksData: ['books', 'userFavourites'],
+      booksData: ["books", "userFavourites"],
       books: [],
-      Search: '',
+      Search: "",
       load: false,
-      orderActive: 'rate',
-      categoryID: '0',
-      book_id: '',
+      orderActive: "rate",
+      categoryID: "0",
+      book_id: "",
       checkBooks: false
     };
   },
@@ -2147,7 +2319,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.books = [];
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/home?user_id=' + this.user_id + "&search=" + this.Search + "&order=" + this.orderActive + "&category=" + this.categoryID).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/home?user_id=" + this.user_id + "&search=" + this.Search + "&order=" + this.orderActive + "&category=" + this.categoryID).then(function (response) {
         console.log(response.data);
         _this.booksData = response.data;
         _this.books = response.data.books.data;
@@ -2165,7 +2337,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.load = true;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/search/?user_id=' + this.user_id + "&search=" + this.Search + "&order=" + this.orderActive + "&category=" + this.categoryID).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/search/?user_id=" + this.user_id + "&search=" + this.Search + "&order=" + this.orderActive + "&category=" + this.categoryID).then(function (response) {
         // console.log(response);
         _this2.booksData = response.data;
         _this2.books = response.data.books.data;
@@ -2181,9 +2353,9 @@ __webpack_require__.r(__webpack_exports__);
 
       this.book_id = id;
       this.load = true;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/makeLike', {
-        'book_id': this.book_id,
-        'user_id': this.user_id
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/makeLike", {
+        book_id: this.book_id,
+        user_id: this.user_id
       }).then(function (response) {
         console.log(response.data);
 
@@ -2212,11 +2384,11 @@ __webpack_require__.r(__webpack_exports__);
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
-      if (typeof page === 'undefined') {
+      if (typeof page === "undefined") {
         page = 1;
       }
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/search?page=' + page + "&user_id=" + this.user_id + +"&search=" + this.Search + "&order=" + this.orderActive + "&category=" + this.categoryID).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/search?page=" + page + "&user_id=" + this.user_id + +"&search=" + this.Search + "&order=" + this.orderActive + "&category=" + this.categoryID).then(function (response) {
         console.log(response.data);
         _this4.booksData = response.data;
         _this4.books = response.data.books.data;
@@ -2287,16 +2459,71 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MyBooksComponent",
-  props: ['user_id'],
+  props: ["user_id"],
   data: function data() {
     return {
-      booksData: ['books', 'userFavourites'],
+      booksData: ["books", "userFavourites"],
       books: [],
       load: false,
-      book_id: '',
+      book_id: "",
       checkBooks: false
     };
   },
@@ -2305,7 +2532,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.books = [];
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/myBooks?user_id=' + this.user_id).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/myBooks?user_id=" + this.user_id).then(function (response) {
         console.log(response.data);
         _this.booksData = response.data;
         _this.books = response.data.books;
@@ -2324,9 +2551,9 @@ __webpack_require__.r(__webpack_exports__);
 
       this.book_id = id;
       this.load = true;
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/makeLikeMyBooks', {
-        'book_id': this.book_id,
-        'user_id': this.user_id
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/makeLikeMyBooks", {
+        book_id: this.book_id,
+        user_id: this.user_id
       }).then(function (response) {
         console.log(response.data);
 
@@ -6800,7 +7027,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.loadSearch[data-v-e363f134]{\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    z-index: 9999;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background: white;\n    opacity: 80%;\n    min-height: 100%;\n}\n.loadSearch i[data-v-e363f134]{\n    z-index: 99999;\n    color: black;\n    font-size: 60px;\n}\n", ""]);
+exports.push([module.i, "\n.loadSearch[data-v-e363f134] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    z-index: 9999;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background: white;\n    opacity: 80%;\n    min-height: 100%;\n}\n.loadSearch i[data-v-e363f134] {\n    z-index: 99999;\n    color: black;\n    font-size: 60px;\n}\n", ""]);
 
 // exports
 
@@ -6819,7 +7046,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.loadSearch[data-v-754b2df6]{\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    z-index: 9999;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background: white;\n    opacity: 80%;\n    min-height: 100%;\n}\n.loadSearch i[data-v-754b2df6]{\n    z-index: 99999;\n    color: black;\n    font-size: 60px;\n}\n", ""]);
+exports.push([module.i, "\n.loadSearch[data-v-754b2df6] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    z-index: 9999;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background: white;\n    opacity: 80%;\n    min-height: 100%;\n}\n.loadSearch i[data-v-754b2df6] {\n    z-index: 99999;\n    color: black;\n    font-size: 60px;\n}\n", ""]);
 
 // exports
 
@@ -6838,7 +7065,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.loadSearch[data-v-26b4512a]{\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    z-index: 9999;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background: white;\n    opacity: 80%;\n    min-height: 100%;\n}\n.loadSearch i[data-v-26b4512a]{\n    z-index: 99999;\n    color: black;\n    font-size: 60px;\n}\n", ""]);
+exports.push([module.i, "\n.loadSearch[data-v-26b4512a] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    z-index: 9999;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background: white;\n    opacity: 80%;\n    min-height: 100%;\n}\n.loadSearch i[data-v-26b4512a] {\n    z-index: 99999;\n    color: black;\n    font-size: 60px;\n}\n", ""]);
 
 // exports
 
@@ -39297,20 +39524,25 @@ var render = function() {
           "div",
           { staticClass: "card-columns" },
           _vm._l(_vm.booksData, function(book) {
-            return _c("div", [
+            return _c("div", { key: book.id }, [
               _c("div", { staticClass: "card" }, [
-                _c("img", {
-                  staticClass: "card-img-top",
-                  attrs: { src: book.image, alt: "..." }
-                }),
+                _c("a", { attrs: { href: "/book/" + book.id } }, [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: "/upload/" + book.image, alt: "..." }
+                  })
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-body" }, [
                   _c(
                     "div",
                     { staticClass: "rateBook mb-2" },
                     [
-                      _vm._l(Math.floor(book.rate), function(rate) {
-                        return _c("i", { staticClass: "fa fa-star" })
+                      _vm._l(Math.floor(book.rate), function(rate, index) {
+                        return _c("i", {
+                          key: index,
+                          staticClass: "fa fa-star"
+                        })
                       }),
                       _vm._v(" "),
                       !Number.isInteger(book.rate)
@@ -39321,16 +39553,25 @@ var render = function() {
                         Number.isInteger(book.rate)
                           ? 5 - Math.floor(book.rate)
                           : 5 - Math.floor(book.rate + 1),
-                        function(rate) {
-                          return _c("i", { staticClass: "fa fa-star-o" })
+                        function(rate, index) {
+                          return _c("i", {
+                            key: index,
+                            staticClass: "fa fa-star-o"
+                          })
                         }
                       )
                     ],
                     2
                   ),
                   _vm._v(" "),
-                  _c("h5", { staticClass: "card-title" }, [
-                    _vm._v(_vm._s(book.bookName))
+                  _c("a", { attrs: { href: "/book/" + book.id } }, [
+                    _c("h5", { staticClass: "card-title" }, [
+                      _vm._v(
+                        "\n                                    " +
+                          _vm._s(book.bookName) +
+                          "\n                                "
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "card-text" }, [
@@ -39348,7 +39589,9 @@ var render = function() {
                         ? _c("p", { staticClass: "card-text mb-0" }, [
                             _c("small", { staticClass: "text-muted" }, [
                               _c("span", [_vm._v(_vm._s(book.count))]),
-                              _vm._v(" copies available")
+                              _vm._v(
+                                "\n                                        copies available"
+                              )
                             ])
                           ])
                         : _c("p", { staticClass: "card-text mb-0" }, [
@@ -39373,7 +39616,11 @@ var render = function() {
                     staticClass: "btn btn-primary w-100",
                     attrs: { disabled: book.count === 0 }
                   },
-                  [_vm._v("Lease")]
+                  [
+                    _vm._v(
+                      "\n                            Lease\n                        "
+                    )
+                  ]
                 )
               ])
             ])
@@ -39389,14 +39636,16 @@ var render = function() {
                 attrs: { role: "alert" }
               },
               [
-                _vm._v("\n                There is No Book Favourites Click "),
+                _vm._v(
+                  "\n                There is No Book Favourites Click\n                "
+                ),
                 _c(
                   "a",
                   { staticClass: "alert-link", attrs: { href: "/home" } },
                   [_vm._v("Here")]
                 ),
                 _vm._v(
-                  " to add some books favourites if you like.\n            "
+                  " to add some\n                books favourites if you like.\n            "
                 )
               ]
             )
@@ -39531,7 +39780,9 @@ var render = function() {
                         ]
                       }
                     }),
-                    _vm._v(" Rate\n                        ")
+                    _vm._v(
+                      "\n                            Rate\n                        "
+                    )
                   ]
                 ),
                 _vm._v(" "),
@@ -39569,7 +39820,9 @@ var render = function() {
                         ]
                       }
                     }),
-                    _vm._v(" Latest\n                        ")
+                    _vm._v(
+                      "\n                            Latest\n                        "
+                    )
                   ]
                 )
               ])
@@ -39632,6 +39885,7 @@ var render = function() {
                       expression: "categoryID"
                     }
                   ],
+                  key: category.id,
                   attrs: {
                     type: "radio",
                     name: "RadioInputName",
@@ -39656,6 +39910,7 @@ var render = function() {
                 _c(
                   "label",
                   {
+                    key: category.id,
                     staticClass: "list-group-item",
                     attrs: { for: category.name }
                   },
@@ -39683,11 +39938,15 @@ var render = function() {
                 attrs: { role: "alert" }
               },
               [
-                _vm._v("\n                There is No Books Click "),
+                _vm._v(
+                  "\n                There is No Books Click\n                "
+                ),
                 _c("a", { staticClass: "alert-link", attrs: { href: "#" } }, [
                   _vm._v("Here")
                 ]),
-                _vm._v(" to add some books if you like.\n            ")
+                _vm._v(
+                  " to add some books if\n                you like.\n            "
+                )
               ]
             )
           : _vm._e(),
@@ -39696,20 +39955,25 @@ var render = function() {
           "div",
           { staticClass: "card-columns" },
           _vm._l(_vm.books, function(book) {
-            return _c("div", [
+            return _c("div", { key: book.id }, [
               _c("div", { staticClass: "card" }, [
-                _c("img", {
-                  staticClass: "card-img-top",
-                  attrs: { src: book.image, alt: "..." }
-                }),
+                _c("a", { attrs: { href: "/book/" + book.id } }, [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: "/upload/" + book.image, alt: "..." }
+                  })
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-body" }, [
                   _c(
                     "div",
                     { staticClass: "rateBook mb-2" },
                     [
-                      _vm._l(Math.floor(book.rate), function(rate) {
-                        return _c("i", { staticClass: "fa fa-star" })
+                      _vm._l(Math.floor(book.rate), function(rate, index) {
+                        return _c("i", {
+                          key: index,
+                          staticClass: "fa fa-star"
+                        })
                       }),
                       _vm._v(" "),
                       !Number.isInteger(book.rate)
@@ -39720,16 +39984,25 @@ var render = function() {
                         Number.isInteger(book.rate)
                           ? 5 - Math.floor(book.rate)
                           : 5 - Math.floor(book.rate + 1),
-                        function(rate) {
-                          return _c("i", { staticClass: "fa fa-star-o" })
+                        function(rate, index) {
+                          return _c("i", {
+                            key: index,
+                            staticClass: "fa fa-star-o"
+                          })
                         }
                       )
                     ],
                     2
                   ),
                   _vm._v(" "),
-                  _c("h5", { staticClass: "card-title" }, [
-                    _vm._v(_vm._s(book.bookName))
+                  _c("a", { attrs: { href: "/book/" + book.id } }, [
+                    _c("h5", { staticClass: "card-title" }, [
+                      _vm._v(
+                        "\n                                    " +
+                          _vm._s(book.bookName) +
+                          "\n                                "
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "card-text" }, [
@@ -39747,7 +40020,9 @@ var render = function() {
                         ? _c("p", { staticClass: "card-text mb-0" }, [
                             _c("small", { staticClass: "text-muted" }, [
                               _c("span", [_vm._v(_vm._s(book.count))]),
-                              _vm._v(" copies available")
+                              _vm._v(
+                                "\n                                        copies available"
+                              )
                             ])
                           ])
                         : _c("p", { staticClass: "card-text mb-0" }, [
@@ -39781,7 +40056,11 @@ var render = function() {
                     staticClass: "btn btn-primary w-100",
                     attrs: { disabled: book.count === 0 }
                   },
-                  [_vm._v("Lease")]
+                  [
+                    _vm._v(
+                      "\n                            Lease\n                        "
+                    )
+                  ]
                 )
               ])
             ])
@@ -39873,20 +40152,25 @@ var render = function() {
           "div",
           { staticClass: "card-columns" },
           _vm._l(_vm.books, function(book) {
-            return _c("div", [
+            return _c("div", { key: book.id }, [
               _c("div", { staticClass: "card" }, [
-                _c("img", {
-                  staticClass: "card-img-top",
-                  attrs: { src: book.image, alt: "..." }
-                }),
+                _c("a", { attrs: { href: "/book/" + book.id } }, [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: "/upload/" + book.image, alt: "..." }
+                  })
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-body" }, [
                   _c(
                     "div",
                     { staticClass: "rateBook mb-2" },
                     [
-                      _vm._l(Math.floor(book.rate), function(rate) {
-                        return _c("i", { staticClass: "fa fa-star" })
+                      _vm._l(Math.floor(book.rate), function(rate, index) {
+                        return _c("i", {
+                          key: index,
+                          staticClass: "fa fa-star"
+                        })
                       }),
                       _vm._v(" "),
                       !Number.isInteger(book.rate)
@@ -39897,16 +40181,25 @@ var render = function() {
                         Number.isInteger(book.rate)
                           ? 5 - Math.floor(book.rate)
                           : 5 - Math.floor(book.rate + 1),
-                        function(rate) {
-                          return _c("i", { staticClass: "fa fa-star-o" })
+                        function(rate, index) {
+                          return _c("i", {
+                            key: index,
+                            staticClass: "fa fa-star-o"
+                          })
                         }
                       )
                     ],
                     2
                   ),
                   _vm._v(" "),
-                  _c("h5", { staticClass: "card-title" }, [
-                    _vm._v(_vm._s(book.bookName))
+                  _c("a", { attrs: { href: "/book/" + book.id } }, [
+                    _c("h5", { staticClass: "card-title" }, [
+                      _vm._v(
+                        "\n                                    " +
+                          _vm._s(book.bookName) +
+                          "\n                                "
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "card-text" }, [
@@ -39924,7 +40217,9 @@ var render = function() {
                         ? _c("p", { staticClass: "card-text mb-0" }, [
                             _c("small", { staticClass: "text-muted" }, [
                               _c("span", [_vm._v(_vm._s(book.count))]),
-                              _vm._v(" copies available")
+                              _vm._v(
+                                "\n                                        copies available"
+                              )
                             ])
                           ])
                         : _c("p", { staticClass: "card-text mb-0" }, [
@@ -39965,14 +40260,16 @@ var render = function() {
                 attrs: { role: "alert" }
               },
               [
-                _vm._v("\n                    There is No Book lease Click "),
+                _vm._v(
+                  "\n                There is No Book lease Click\n                "
+                ),
                 _c(
                   "a",
                   { staticClass: "alert-link", attrs: { href: "/home" } },
                   [_vm._v("Here")]
                 ),
                 _vm._v(
-                  " to add some books lease if you like.\n                "
+                  " to add some\n                books lease if you like.\n            "
                 )
               ]
             )
@@ -52165,15 +52462,21 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+ // window.$ = window.jQuery = $;
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js")); // import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
@@ -52206,6 +52509,42 @@ Vue.component('my-books-component', __webpack_require__(/*! ./components/MyBooks
 
 var app = new Vue({
   el: '#app'
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.rate').on('click', function (e) {
+    var _this = this;
+
+    console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('rate'));
+    console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('book'));
+    var val = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('rate');
+    var id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('book');
+    axios.post('/bookRate ', {
+      rate: val,
+      book_id: id
+    }).then(function (response) {
+      console.log(response);
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(_this).removeClass('fa-star-o').addClass('fa-star');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(_this).prevAll('i').removeClass('fa-star-o').addClass('fa-star');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(_this).nextAll('i').addClass('fa-star-o');
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  });
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.like').on('click', function (e) {
+    var _this2 = this;
+
+    var book_id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('book');
+    var user_id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('user');
+    axios.post("/api/makeLike", {
+      book_id: book_id,
+      user_id: user_id
+    }).then(function (response) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(_this2).toggleClass('fa-heart fa-heart-o');
+      console.log(response);
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  });
 });
 
 /***/ }),
