@@ -52,6 +52,17 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'bookName' => 'required|unique:books|max:255',
+
+            'author'=>'required|min:2|max:30|',
+            'pricePerDay'=>'numeric|required',
+            'count'=>'numeric|required',
+            'description'=>'string'
+
+            ]);
+
         $data = $request->all();
         $data['user_id'] = 1;
 
